@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity3"
+    android:background="@color/blue">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Регистрация"
+        android:onClick="nextToReg"
+        android:textColor="@color/orange"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/opasity_but"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="105dp"
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/red_but"
+        android:onClick="nextToToolbar"
+        android:text="Войти"
+        android:textColor="@color/white_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        android:background="@drawable/edit_text"
+        android:textColorHint="@color/gray"
+        android:layout_marginTop="72dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingTop="13dp"
+        android:paddingBottom="13dp"
+        android:paddingStart="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Пароль"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/edit_text"
+        android:paddingTop="13dp"
+        android:paddingBottom="13dp"
+        android:paddingStart="16dp"
+        android:layout_marginTop="15dp"
+        android:inputType="textPassword"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="179dp"
+        android:layout_height="95dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="72dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="207dp"
+        android:layout_height="23dp"
+        android:src="@drawable/img"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <CheckBox
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:id="@+id/checkBox"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@null"
+        android:drawableStart="@drawable/check_box"
+        android:text="Запомнить данные"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+</androidx.constraintlayout.widget.ConstraintLayout>
