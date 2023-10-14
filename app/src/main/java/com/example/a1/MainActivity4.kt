@@ -38,7 +38,7 @@ class MainActivity4 : AppCompatActivity() {
         }
     }
 
-    fun next1(view: View) {
+    fun reset(view: View) {
         val intent= Intent(this@MainActivity4, MainActivity::class.java)
         startActivity(intent)
         finish()
