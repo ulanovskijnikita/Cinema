@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import java.util.regex.Pattern
 
-class MainActivity2 : AppCompatActivity() {
+class MainEnter : AppCompatActivity() {
     lateinit var mail: EditText
     lateinit var pass: EditText
     val patternMail = ("[a-zA-Z0-9]{1,100}" + "@" + "[a-z]{1,6}" + "\\." + "[a-z]{1,5}")
@@ -19,7 +19,7 @@ class MainActivity2 : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.activity_enter)
         mail = findViewById(R.id.editTextTextEmailAddress)
         pass = findViewById(R.id.editTextTextPassword)
     }
@@ -48,7 +48,7 @@ class MainActivity2 : AppCompatActivity() {
                 ).show()
 
                 else -> {
-                    val intent = Intent(this@MainActivity2, ToolbarActivity::class.java)
+                    val intent = Intent(this@MainEnter, ToolbarActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -64,7 +64,7 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         fun nextToReg(view: View) {
-            val intent = Intent(this@MainActivity2, MainActivity3::class.java)
+            val intent = Intent(this@MainEnter, MainReg::class.java)
             startActivity(intent)
             finish()
         }

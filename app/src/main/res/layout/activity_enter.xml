@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity3"
+    tools:context=".MainReg"
     android:background="@color/blue">
 
     <androidx.appcompat.widget.AppCompatButton
@@ -101,10 +101,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:id="@+id/checkBox"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:button="@null"
         android:drawableStart="@drawable/check_box"
         android:text="Запомнить данные"
         app:layout_constraintStart_toStartOf="parent"

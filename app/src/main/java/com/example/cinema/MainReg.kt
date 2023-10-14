@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import java.util.regex.Pattern
 
-class MainActivity3 : AppCompatActivity() {
+class MainReg : AppCompatActivity() {
     lateinit var name:EditText
     lateinit var family:EditText
     lateinit var mail:EditText
@@ -22,7 +22,7 @@ class MainActivity3 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main3)
+        setContentView(R.layout.activity_reg)
         name=findViewById(R.id.editTextTextPersonName)
         family=findViewById(R.id.editTextTextPersonFamily)
         mail=findViewById(R.id.editTextTextEmailAddress)
@@ -43,7 +43,7 @@ class MainActivity3 : AppCompatActivity() {
     }
 
     fun nextToEnter(view: View) {
-        val intent= Intent(this@MainActivity3, MainActivity2::class.java)
+        val intent= Intent(this@MainReg, MainEnter::class.java)
         startActivity(intent)
         finish()
     }
@@ -82,7 +82,7 @@ class MainActivity3 : AppCompatActivity() {
                 ).show()
 
                 else -> {
-                    val intent = Intent(this@MainActivity3, ToolbarActivity::class.java)
+                    val intent = Intent(this@MainReg, ToolbarActivity::class.java)
                     val window=Toast.makeText(this, "Регистрация успешна", Toast.LENGTH_LONG).show()
                     startActivity(intent)
                     finish()

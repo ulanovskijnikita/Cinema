@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
             override fun onTick(p0: Long) {
             }
             override fun onFinish() {
-                val intent=Intent(this@MainActivity, MainActivity2::class.java)
+                val intent=Intent(this@MainActivity, MainEnter::class.java)
                 startActivity(intent)
                 finish()
             }

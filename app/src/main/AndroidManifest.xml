@@ -35,11 +35,11 @@
         </activity>
 
         <activity
-            android:name=".MainActivity3"
+            android:name=".MainReg"
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity2"
+            android:name=".MainEnter"
             android:exported="false" />
 
         <activity

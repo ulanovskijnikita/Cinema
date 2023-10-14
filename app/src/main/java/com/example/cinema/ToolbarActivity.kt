@@ -79,7 +79,7 @@ class ToolbarActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                val inte = Intent(this, MainActivity2::class.java)
+                val inte = Intent(this, MainEnter::class.java)
                 startActivity(inte)
                 finish()
             }
