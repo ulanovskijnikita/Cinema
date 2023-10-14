@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/recycler_person_image"
-            android:layout_width="128dp"
-            android:layout_height="112dp"
+            android:layout_width="112dp"
+            android:layout_height="138dp"
             android:scaleType="centerCrop"
             android:src="@drawable/person_ella_j_basco"
             app:layout_constraintStart_toStartOf="parent"
