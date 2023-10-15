@@ -2,17 +2,22 @@ package com.example.cinema
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import java.util.regex.Pattern
 
-class MainEnter : AppCompatActivity() {
+class enterActivity : AppCompatActivity() {
+
+    var preff:SharedPreferences?=null
     lateinit var mail: EditText
     lateinit var pass: EditText
+    lateinit var checkBox: CheckBox
     val patternMail = ("[a-zA-Z0-9]{1,100}" + "@" + "[a-z]{1,6}" + "\\." + "[a-z]{1,5}")
     val patternPass = ("[a-zA-Z0-9!@#$%&()-+]{8,100}")
 
@@ -22,6 +27,10 @@ class MainEnter : AppCompatActivity() {
         setContentView(R.layout.activity_enter)
         mail = findViewById(R.id.editTextTextEmailAddress)
         pass = findViewById(R.id.editTextTextPassword)
+        checkBox = findViewById(R.id.checkBox)
+        preff=getSharedPreferences("preffTable", MODE_PRIVATE)
+        checkBox.isChecked=preff?.getBoolean("key3", false)?:false
+
     }
 
     fun emailValid(text: String): Boolean {
@@ -48,7 +57,7 @@ class MainEnter : AppCompatActivity() {
                 ).show()
 
                 else -> {
-                    val intent = Intent(this@MainEnter, ToolbarActivity::class.java)
+                    val intent = Intent(this@enterActivity, toolbarActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -64,7 +73,7 @@ class MainEnter : AppCompatActivity() {
         }
 
         fun nextToReg(view: View) {
-            val intent = Intent(this@MainEnter, MainReg::class.java)
+            val intent = Intent(this@enterActivity, regActivity::class.java)
             startActivity(intent)
             finish()
         }

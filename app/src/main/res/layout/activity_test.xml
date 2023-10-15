@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityTest"
+    tools:context=".testActivity"
     android:background="@color/blue">
 
 
@@ -52,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/blue"
+        android:background="@color/bottom_nav"
         app:menu="@menu/menu_of_four_activity"
         app:itemTextColor="@drawable/bottom_res"
         app:itemIconTint="@drawable/bottom_res"

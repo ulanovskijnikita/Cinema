@@ -13,10 +13,10 @@ import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ToolbarActivity : AppCompatActivity() {
+class toolbarActivity : AppCompatActivity() {
     lateinit var tb:Toolbar
     fun backToMainActivity4() {
-        val intent= Intent(this, ActivityTest::class.java)
+        val intent= Intent(this, testActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -79,7 +79,7 @@ class ToolbarActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                val inte = Intent(this, MainEnter::class.java)
+                val inte = Intent(this, enterActivity::class.java)
                 startActivity(inte)
                 finish()
             }

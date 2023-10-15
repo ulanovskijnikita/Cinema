@@ -20,11 +20,11 @@
         </activity>
 
         <activity
-            android:name=".ToolbarActivity"
+            android:name=".toolbarActivity"
             android:exported="false"/>
 
         <activity
-            android:name=".ActivityTest"
+            android:name=".testActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,15 +35,15 @@
         </activity>
 
         <activity
-            android:name=".MainReg"
+            android:name=".regActivity"
             android:exported="false" />
 
         <activity
-            android:name=".MainEnter"
+            android:name=".enterActivity"
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".mainActivity"
             android:exported="false" />
     </application>
 

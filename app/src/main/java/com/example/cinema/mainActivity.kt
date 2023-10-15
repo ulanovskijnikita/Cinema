@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 
-class MainActivity : AppCompatActivity() {
+class mainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
             override fun onTick(p0: Long) {
             }
             override fun onFinish() {
-                val intent=Intent(this@MainActivity, MainEnter::class.java)
+                val intent=Intent(this@mainActivity, enterActivity::class.java)
                 startActivity(intent)
                 finish()
             }

@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ToolbarActivity"
+    tools:context=".toolbarActivity"
     android:background="@color/blue">
-
-
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,14 +18,13 @@
             android:layout_width="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-
             <ImageView
+                android:layout_marginTop="50dp"
                 android:id="@+id/imageView5"
                 android:layout_width="match_parent"
                 android:layout_height="510dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/bg"
+                android:src="@drawable/toolbar_bg"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -177,7 +172,7 @@
         android:id="@+id/bottom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
+        android:background="@color/bottom_nav"
         app:itemIconTint="@drawable/bottom_res"
         app:itemRippleColor="@null"
         app:itemTextColor="@drawable/bottom_res"

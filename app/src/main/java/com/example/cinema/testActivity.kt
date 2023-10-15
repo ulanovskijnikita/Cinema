@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ActivityTest : AppCompatActivity() {
+class testActivity : AppCompatActivity() {
     fun backToFilms() {
         val intent= Intent(this, filmsActivity::class.java)
         startActivity(intent)
@@ -15,7 +15,7 @@ class ActivityTest : AppCompatActivity() {
     }
 
     fun backToToolbar() {
-        val intent= Intent(this, ToolbarActivity::class.java)
+        val intent= Intent(this, toolbarActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -38,7 +38,7 @@ class ActivityTest : AppCompatActivity() {
     }
 
     fun reset(view: View) {
-        val intent= Intent(this@ActivityTest, MainActivity::class.java)
+        val intent= Intent(this@testActivity, mainActivity::class.java)
         startActivity(intent)
         finish()
     }

@@ -20,13 +20,13 @@ class filmsActivity : AppCompatActivity() {
 
 
     fun backToMainActivity4() {
-        val intent= Intent(this, ActivityTest::class.java)
+        val intent= Intent(this, testActivity::class.java)
         startActivity(intent)
         finish()
     }
 
     fun backToToolbar() {
-        val intent= Intent(this, ToolbarActivity::class.java)
+        val intent= Intent(this, toolbarActivity::class.java)
         startActivity(intent)
         finish()
     }
