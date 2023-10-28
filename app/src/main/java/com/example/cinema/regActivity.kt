@@ -1,33 +1,32 @@
 package com.example.cinema
-
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.cinema.db.regDbManager
 import java.util.regex.Pattern
 
 class regActivity : AppCompatActivity() {
+    var preffEmailAndPass = preffMailAndPass()
+    val regDbManager = regDbManager(this)
+
     lateinit var name:EditText
     lateinit var family:EditText
-    lateinit var mail:EditText
-    lateinit var pass:EditText
     lateinit var passDouble:EditText
+
+    lateinit var regButton:Button
+    lateinit var backToEnterButton:Button
 
     val patternNameAndFamily = ("[a-zA-Zа-яА-я0-9]{1,15}")
     val patternMail = ("[a-zA-Z0-9]{1,100}" + "@" + "[a-z]{1,6}" + "\\." + "[a-z]{1,5}")
     val patternPass = ("[a-zA-Z0-9!@#$%&()-+]{8,100}")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reg)
-        name=findViewById(R.id.editTextTextPersonName)
-        family=findViewById(R.id.editTextTextPersonFamily)
-        mail=findViewById(R.id.editTextTextEmailAddress)
-        pass=findViewById(R.id.editTextNumberPassword)
-        passDouble=findViewById(R.id.editTextNumberPasswordDouble)
+    fun validPass(text: String):Boolean {
+        return Pattern.compile(patternPass).matcher(text).matches()
     }
 
     fun validNameAndFamily(text: String):Boolean {
@@ -38,63 +37,98 @@ class regActivity : AppCompatActivity() {
         return Pattern.compile(patternMail).matcher(text).matches()
     }
 
-    fun validPass(text: String):Boolean {
-        return Pattern.compile(patternPass).matcher(text).matches()
+    fun existenceMail(): Boolean {
+        val mailArray = regDbManager.readDbDataMail()
+        val existence = mailArray.contains(preffEmailAndPass.mail.text.toString())
+        return existence
     }
 
-    fun nextToEnter(view: View) {
-        val intent= Intent(this@regActivity, enterActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
+    @SuppressLint("MissingInflatedId")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_reg)
 
-    fun nextToToolbar(view: View) {
-        if (name.text.toString().isNotEmpty() && family.text.toString().isNotEmpty() && mail.text.toString().isNotEmpty() && pass.text.toString().isNotEmpty() && passDouble.text.toString().isNotEmpty()) {
-            when (false) {
-                validNameAndFamily(name.text.toString()) -> Toast.makeText(
-                    this,
-                    "Имя заполненна некорректно",
-                    Toast.LENGTH_SHORT
-                ).show()
+        preffEmailAndPass.preffEmailAndPass = getSharedPreferences("preffEmailAndPass", MODE_PRIVATE)
 
-                validNameAndFamily(family.text.toString()) -> Toast.makeText(
-                    this,
-                    "Фамилия заполненна некорректно",
-                    Toast.LENGTH_SHORT
-                ).show()
+        preffEmailAndPass.mail=findViewById(R.id.editTextTextEmailAddressReg)
+        preffEmailAndPass.checkBox = findViewById(R.id.checkBoxReg)
+        preffEmailAndPass.pass=findViewById(R.id.editTextTextPasswordReg)
 
-                validMail(mail.text.toString()) -> Toast.makeText(
-                    this,
-                    "Почта заполненна некорректно",
-                    Toast.LENGTH_SHORT
-                ).show()
+        name=findViewById(R.id.editTextTextPersonNameReg)
+        family=findViewById(R.id.editTextTextPersonFamilyReg)
+        passDouble=findViewById(R.id.editTextTextPasswordDoubleReg)
 
-                validPass(pass.text.toString()) -> Toast.makeText(
-                    this,
-                    "Пароль должен состоять из 8 и более символов",
-                    Toast.LENGTH_SHORT
-                ).show()
+        regButton=findViewById(R.id.regButton)
+        backToEnterButton=findViewById(R.id.backToEnterButton)
 
-                (pass.text.toString() == passDouble.text.toString()) -> Toast.makeText(
-                    this,
-                    "Пароли не совпадают",
-                    Toast.LENGTH_SHORT
-                ).show()
+        regButton.setOnClickListener {
+            if (name.text.toString().isNotEmpty() && family.text.toString().isNotEmpty() && preffEmailAndPass.mail.text.toString().isNotEmpty() && preffEmailAndPass.pass.text.toString().isNotEmpty() && passDouble.text.toString().isNotEmpty()) {
+                when (false) {
+                    validNameAndFamily(name.text.toString()) -> Toast.makeText(
+                        this,
+                        "Имя заполненна некорректно",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
-                else -> {
-                    val intent = Intent(this@regActivity, toolbarActivity::class.java)
-                    val window=Toast.makeText(this, "Регистрация успешна", Toast.LENGTH_LONG).show()
-                    startActivity(intent)
-                    finish()
+                    validNameAndFamily(family.text.toString()) -> Toast.makeText(
+                        this,
+                        "Фамилия заполненна некорректно",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    validMail(preffEmailAndPass.mail.text.toString()) -> Toast.makeText(
+                        this,
+                        "Почта заполненна некорректно",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    !existenceMail() -> Toast.makeText(
+                        this,
+                        "Почта уже зарегестрирована",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    validPass(preffEmailAndPass.pass.text.toString()) -> Toast.makeText(
+                        this,
+                        "Пароль должен состоять из 8 и более символов",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    (preffEmailAndPass.pass.text.toString() == passDouble.text.toString()) -> Toast.makeText(
+                        this,
+                        "Пароли не совпадают",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    else -> {
+                        regDbManager.incertToDb(name.text.toString(), family.text.toString(), preffEmailAndPass.mail.text.toString(), preffEmailAndPass.pass.text.toString())
+                        regDbManager.closeDb()
+
+                        preffEmailAndPass.preffEmailAndPassInsert()
+
+                        Toast.makeText(this, "Регистрация успешна", Toast.LENGTH_LONG).show()
+
+                        val intent = Intent(this@regActivity, enterActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 }
             }
+            else {
+                AlertDialog.Builder(this)
+                    .setTitle("Заполните текстовые поля")
+                    .setPositiveButton("ОК", null)
+                    .create()
+                    .show()
+            }
         }
-        else {
-            val alert = AlertDialog.Builder(this)
-                .setTitle("Заполните текстовые поля")
-                .setPositiveButton("ОК", null)
-                .create()
-                .show()
+
+        backToEnterButton.setOnClickListener {
+            regDbManager.closeDb()
+
+            val intent= Intent(this@regActivity, enterActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
