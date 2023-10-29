@@ -51,21 +51,25 @@ class enterActivity : AppCompatActivity() {
         buttonToToolbar.setOnClickListener() {
             if (preffEmailAndPass.mail.text.toString().isNotEmpty() && preffEmailAndPass.pass.text.toString().isNotEmpty()) {
                 when (false) {
-                    existenceMail() -> Toast.makeText(
-                        this,
-                        "Почта не зарегистрирована",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    existenceMail() -> {
+                        Toast.makeText(
+                            this,
+                            "Почта не зарегистрирована",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        regDbManager.closeDb()
+                    }
 
-                    existenceMailAndPass() -> Toast.makeText(
-                        this,
-                        "Неверный пароль",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    existenceMailAndPass() -> {
+                        Toast.makeText(
+                            this,
+                            "Неверный пароль",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        regDbManager.closeDb()
+                    }
 
                     else -> {
-                        regDbManager.closeDb()
-
                         preffEmailAndPass.preffEmailAndPassInsert()
 
                         Toast.makeText(this, "Добро пожаловать, " + greeting(), Toast.LENGTH_SHORT).show()
@@ -85,8 +89,6 @@ class enterActivity : AppCompatActivity() {
         }
 
         buttonToReg.setOnClickListener() {
-            regDbManager.closeDb()
-            
             val intent = Intent(this@enterActivity, regActivity::class.java)
             startActivity(intent)
             finish()

@@ -82,11 +82,14 @@ class regActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-                    !existenceMail() -> Toast.makeText(
-                        this,
-                        "Почта уже зарегестрирована",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    !existenceMail() -> {
+                        Toast.makeText(
+                            this,
+                            "Почта уже зарегестрирована",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        regDbManager.closeDb()
+                    }
 
                     validPass(preffEmailAndPass.pass.text.toString()) -> Toast.makeText(
                         this,
@@ -103,7 +106,6 @@ class regActivity : AppCompatActivity() {
                     else -> {
                         regDbManager.incertToDb(name.text.toString(), family.text.toString(), preffEmailAndPass.mail.text.toString(), preffEmailAndPass.pass.text.toString())
                         regDbManager.closeDb()
-
                         preffEmailAndPass.preffEmailAndPassInsert()
 
                         Toast.makeText(this, "Регистрация успешна", Toast.LENGTH_LONG).show()
@@ -124,8 +126,6 @@ class regActivity : AppCompatActivity() {
         }
 
         backToEnterButton.setOnClickListener {
-            regDbManager.closeDb()
-
             val intent= Intent(this@regActivity, enterActivity::class.java)
             startActivity(intent)
             finish()
