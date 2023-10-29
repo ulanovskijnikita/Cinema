@@ -73,6 +73,7 @@ class enterActivity : AppCompatActivity() {
                         preffEmailAndPass.preffEmailAndPassInsert()
 
                         Toast.makeText(this, "Добро пожаловать, " + greeting(), Toast.LENGTH_SHORT).show()
+                        regDbManager.closeDb()
 
                         val intent = Intent(this, toolbarActivity::class.java)
                         startActivity(intent)
