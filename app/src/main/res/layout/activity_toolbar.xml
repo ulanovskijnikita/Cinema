@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".toolbarActivity"
+    tools:context=".ToolbarActivity"
     android:background="@color/blue">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingBottom="50dp">
+        app:layout_constraintBottom_toTopOf="@+id/bottom">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
 
             <FrameLayout
                 android:id="@+id/frameLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -137,14 +137,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:videoId="Zb54LZerPQA" />
-
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/frameLayout2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/frameLayout">
 

@@ -4,22 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".regActivity"
+    tools:context=".RegActivity"
     android:background="@color/blue">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonToReg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/opasity_but"
         android:text="Регистрация"
         android:textColor="@color/orange"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonToToolbar"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/opasity_but"/>
+        tools:ignore="HardcodedText,TextContrastCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="105dp"
@@ -33,7 +34,8 @@
         android:textColor="@color/white_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxEnter" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxEnter"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddressEnter"
@@ -53,7 +55,8 @@
         android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        tools:ignore="Autofill,HardcodedText,RtlSymmetry" />
 
     <EditText
         android:id="@+id/editTextTextPasswordEnter"
@@ -73,17 +76,19 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddressEnter"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddressEnter"
+        tools:ignore="Autofill,HardcodedText,RtlSymmetry" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="179dp"
         android:layout_height="95dp"
-        android:src="@drawable/logo"
         android:layout_marginTop="72dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -108,5 +113,6 @@
         android:text="Запомнить данные"
         android:background="@null"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPasswordEnter" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPasswordEnter"
+        tools:ignore="HardcodedText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
